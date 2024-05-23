@@ -1,30 +1,31 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const contactSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   lastName: {
     type: String,
-    required: true,
+    required: true
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   phoneNumber: {
     type: String,
-    required: true,
+    required: true
   },
   id_Usuario: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   }
 });
 

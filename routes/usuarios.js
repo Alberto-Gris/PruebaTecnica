@@ -3,6 +3,12 @@ const router = express.Router();
 
 import User from '../models/usuarioModel.js';
 
+router.get("/mostrarContactos", async (req,res) => {
+    //const contactos = await Contact.find();
+    const contactos = await User.find().populate('contacts');
+    res.json(contactos);
+  });
+
 router.put("/actualizar/:id",async (req,res) => {
     const user = await User.findByIdAndUpdate(req.params.id,req.body,{new:true});
     res.json(user);
@@ -20,6 +26,11 @@ router.delete("/eliminar/:id",async (req,res) => {
 
 router.get("/mostrar", async (req,res) => {
     const users = await User.find();
+    res.json(users);
+});
+
+router.get("/listar/:id", async (req,res) => {
+    const users = await User.findById(req.params.id);
     res.json(users);
 });
 
