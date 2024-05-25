@@ -5,6 +5,7 @@ import userRoute from './routes/usuarios.js';
 import contactRoute from './routes/contactos.js';
 import dbconnect from './database.js';
 
+const port = 3000;
 const app = express();
 
 app.use(cors());
@@ -16,6 +17,6 @@ app.use('/contactos', contactRoute);
 
 dbconnect();
 
-app.listen(process.env.PORT ||80,() => {
-    console.log("Server listening on port 80");
+app.listen(process.env.PORT ||port,() => {
+    console.log("Server listening on port ",port);
 });
